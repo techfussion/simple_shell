@@ -18,8 +18,16 @@ ssize_t line_read;
 char *next_token = NULL;
 while (works)
 {
+if (isatty(STDIN_FILENO))
+{
 display_prompt();
 line_read = getline(&comd, &comd_len, stdin);/*gets user input */
+}
+else
+{
+line_read = read(STDIN_FILENO, comd, MAX_LINE);
+comd[line_read] = '\0';
+}
 if (line_read == -1 && isatty(STDIN_FILENO))/*when there isnt comd or ctr+D */
 {
 works = 0;
@@ -32,11 +40,6 @@ exit(1);
 }
 remove_newline(comd);/*remobes newline char*/
 tokenize(comd, args, &next_token);/*tokenizes comd */
-if (args[1] != NULL)
-{
-perror("Error: Commands with arguments are not supported.");
-continue;
-}
 if (check_exit(args))
 {
 works = 0;
