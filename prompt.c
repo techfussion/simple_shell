@@ -6,6 +6,6 @@
  */
 void display_prompt(void)
 {
-        char *prompt = "Shelly;) ";
-        write(STDOUT_FILENO, prompt, 9);
+char *prompt = "Shelly;) ";
+write(STDOUT_FILENO, prompt, 9);
 }
