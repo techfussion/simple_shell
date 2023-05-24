@@ -32,6 +32,11 @@ exit(1);
 }
 remove_newline(comd);/*remobes newline char*/
 tokenize(comd, args, &next_token);/*tokenizes comd */
+if (args[1] != NULL)
+{
+perror("Error: Commands with arguments are not supported.");
+continue;
+}
 if (check_exit(args))
 {
 works = 0;

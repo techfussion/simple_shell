@@ -11,6 +11,12 @@
 void comd_exec(char **args)
 {
 pid_t pid = fork();/* created the chuld process */
+if (args[1] != NULL)
+{
+perror("Error: Commands with arguments are not supported.");
+return;
+}
+
 if (pid < 0)
 {
 perror("fork");
