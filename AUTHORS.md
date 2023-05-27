@@ -1,2 +1,0 @@
-Leonard Ogolla
-Vene Abdulmumin
